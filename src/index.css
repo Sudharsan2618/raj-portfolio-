@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+  background-color: #f8fafc;
+}
+
+.dmk-gradient {
+  background: linear-gradient(135deg, #000000 0%, #cc0000 100%);
+}
+
+.text-dmk-red {
+  color: #cc0000;
+}
+
+.bg-dmk-red {
+  background-color: #cc0000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

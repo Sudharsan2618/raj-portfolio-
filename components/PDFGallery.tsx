@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FileText, Download, ExternalLink, X, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,11 @@ const pdfs = [
 
 const PDFGallery: React.FC = () => {
   const [selectedPDF, setSelectedPDF] = useState<string | null>(null);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleViewPDF = (path: string) => {
     setSelectedPDF(path);

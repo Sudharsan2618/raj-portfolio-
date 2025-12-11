@@ -86,9 +86,9 @@ export const APP_CONTENT = {
   },
   contact: {
     phone: "+91-90903 33309",
-    email: "office@rajkanna.com", 
+    email: "office@rajkanna.com",
     location: "Chennai, Tamil Nadu",
-    footer_quote: "Carrying the pen of Ezhuthazhagan, the reformist vision of NSK, and the modern strategy of Kalaignar."
+    footer_quote: "Carrying the pen of Ezhuthazhagan, the reformist vision of NSK, and the indomitable will of Kalaignar."
   }
 };
 

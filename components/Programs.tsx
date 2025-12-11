@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Calendar, MapPin, Award } from 'lucide-react';
 
@@ -64,18 +64,32 @@ const programsData = [
 ];
 
 const ITEMS_PER_PAGE = 4;
+const AUTO_SCROLL_INTERVAL = 4000; // 4 seconds
 
 const Programs: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedProgram, setSelectedProgram] = useState<typeof programsData[0] | null>(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [imageLoading, setImageLoading] = useState(false);
+    const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
 
     const totalPages = Math.ceil(programsData.length / ITEMS_PER_PAGE);
     const currentPrograms = programsData.slice(
         currentPage * ITEMS_PER_PAGE,
         (currentPage + 1) * ITEMS_PER_PAGE
     );
+
+    // Auto-scroll effect for modal images
+    useEffect(() => {
+        if (!selectedProgram || selectedProgram.images.length <= 1 || isAutoScrollPaused) return;
+
+        const interval = setInterval(() => {
+            setImageLoading(true);
+            setCurrentImageIndex(prev => (prev + 1) % selectedProgram.images.length);
+        }, AUTO_SCROLL_INTERVAL);
+
+        return () => clearInterval(interval);
+    }, [selectedProgram, isAutoScrollPaused]);
 
     const openModal = (program: typeof programsData[0]) => {
         setSelectedProgram(program);
@@ -86,6 +100,7 @@ const Programs: React.FC = () => {
     const closeModal = () => {
         setSelectedProgram(null);
         setCurrentImageIndex(0);
+        setIsAutoScrollPaused(false);
     };
 
     const navigateImage = (direction: number) => {
@@ -93,6 +108,9 @@ const Programs: React.FC = () => {
         setImageLoading(true);
         const newIndex = (currentImageIndex + direction + selectedProgram.images.length) % selectedProgram.images.length;
         setCurrentImageIndex(newIndex);
+        // Pause auto-scroll when user manually navigates
+        setIsAutoScrollPaused(true);
+        setTimeout(() => setIsAutoScrollPaused(false), AUTO_SCROLL_INTERVAL * 2);
     };
 
     const handleImageLoad = () => {
@@ -202,8 +220,8 @@ const Programs: React.FC = () => {
                                     key={idx}
                                     onClick={() => setCurrentPage(idx)}
                                     className={`w-3 h-3 rounded-full transition-all ${currentPage === idx
-                                            ? 'bg-amber-500 w-8'
-                                            : 'bg-zinc-600 hover:bg-zinc-500'
+                                        ? 'bg-amber-500 w-8'
+                                        : 'bg-zinc-600 hover:bg-zinc-500'
                                         }`}
                                     aria-label={`Go to page ${idx + 1}`}
                                 />
@@ -273,7 +291,7 @@ const Programs: React.FC = () => {
                                 {/* Image Gallery */}
                                 <div className="relative">
                                     {/* Main Image */}
-                                    <div className="relative aspect-video rounded-xl overflow-hidden bg-zinc-800 mb-4">
+                                    <div className="relative rounded-xl overflow-hidden bg-zinc-800 mb-4 flex items-center justify-center">
                                         {/* Loading Spinner */}
                                         {imageLoading && (
                                             <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -284,7 +302,7 @@ const Programs: React.FC = () => {
                                             src={selectedProgram.images[currentImageIndex]}
                                             alt={`${selectedProgram.title} - Image ${currentImageIndex + 1}`}
                                             onLoad={handleImageLoad}
-                                            className={`w-full h-full object-contain transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+                                            className={`max-w-full max-h-[60vh] w-auto h-auto object-contain transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
                                         />
 
                                         {/* Navigation Arrows */}
@@ -314,7 +332,7 @@ const Programs: React.FC = () => {
                                     </div>
 
                                     {/* Thumbnail Strip */}
-                                    {selectedProgram.images.length > 1 && (
+                                    {/* {selectedProgram.images.length > 1 && (
                                         <div className="flex gap-2 overflow-x-auto pb-2">
                                             {selectedProgram.images.map((img, idx) => (
                                                 <button
@@ -322,10 +340,13 @@ const Programs: React.FC = () => {
                                                     onClick={() => {
                                                         setImageLoading(true);
                                                         setCurrentImageIndex(idx);
+                                                        // Pause auto-scroll when user clicks thumbnail
+                                                        setIsAutoScrollPaused(true);
+                                                        setTimeout(() => setIsAutoScrollPaused(false), AUTO_SCROLL_INTERVAL * 2);
                                                     }}
                                                     className={`flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all ${currentImageIndex === idx
-                                                            ? 'border-amber-500 ring-2 ring-amber-500/50'
-                                                            : 'border-zinc-700 hover:border-zinc-500'
+                                                        ? 'border-amber-500 ring-2 ring-amber-500/50'
+                                                        : 'border-zinc-700 hover:border-zinc-500'
                                                         }`}
                                                 >
                                                     <img
@@ -336,7 +357,7 @@ const Programs: React.FC = () => {
                                                 </button>
                                             ))}
                                         </div>
-                                    )}
+                                    )} */}
                                 </div>
                             </div>
                         </motion.div>

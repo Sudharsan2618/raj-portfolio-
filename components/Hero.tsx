@@ -68,12 +68,7 @@ const Hero: React.FC = () => {
                   kanna.S
                 </span>
               </h1>
-              <span
-                className="text-amber-400 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-wide"
-                style={{ textShadow: '0 0 15px rgba(251, 191, 36, 0.4)' }}
-              >
-                B.E, MBA, LL.B
-              </span>
+              
             </div>
           </motion.div>
 

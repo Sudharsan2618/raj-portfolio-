@@ -29,15 +29,7 @@ const Navbar: React.FC = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between text-white">
-        <a
-          href="#home"
-          className="text-xl sm:text-2xl font-bold tracking-tighter focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black rounded"
-          aria-label="Raj Kanna.S - Home"
-        >
-          <span className="text-white">Raj</span>{' '}
-          <span className="text-red-600">kanna S</span>
-        </a>
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-center text-white">
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-4 lg:gap-8">

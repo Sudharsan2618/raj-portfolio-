@@ -41,12 +41,8 @@ const Hero: React.FC = () => {
                 <span className="text-red-600">kanna.S</span>
               </h1>
               <span
-                className="inline-flex items-center px-3 sm:px-4 py-1 sm:py-1.5 text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-wider rounded-full border-2 border-amber-400/60 bg-gradient-to-r from-amber-500/20 via-yellow-400/10 to-amber-500/20 backdrop-blur-sm shadow-lg shadow-amber-500/20"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.1) 50%, rgba(251, 191, 36, 0.15) 100%)',
-                  color: '#fcd34d',
-                  textShadow: '0 0 20px rgba(251, 191, 36, 0.5)',
-                }}
+                className="text-amber-400 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-wide"
+                style={{ textShadow: '0 0 15px rgba(251, 191, 36, 0.4)' }}
               >
                 B.E, MBA, LL.B
               </span>

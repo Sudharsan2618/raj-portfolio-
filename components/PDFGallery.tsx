@@ -51,8 +51,21 @@ const PDFGallery: React.FC = () => {
             whileHover={{ y: -5 }}
             className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:border-red-600 transition-all"
           >
-            <div className="aspect-[3/4] bg-gray-100 flex items-center justify-center">
-              <FileText size={64} className="text-red-600" />
+            <div className="aspect-square bg-gray-100 relative overflow-hidden group">
+              {/* PDF Preview using iframe */}
+              <iframe
+                src={`${pdf.path}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                className="w-full h-full border-0 pointer-events-none"
+                title={`Preview of ${pdf.name}`}
+              />
+              {/* Overlay gradient for better UX */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <div className="w-12 h-12 bg-red-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                  <FileText size={24} className="text-white" />
+                </div>
+              </div>
             </div>
             <div className="p-4 sm:p-6">
               <h4 className="font-bold text-base sm:text-lg mb-3">{pdf.name}</h4>

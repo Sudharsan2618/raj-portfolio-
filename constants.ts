@@ -4,7 +4,7 @@ export const APP_CONTENT = {
     title: "Raj Kanna S",
     subtitle: "A Legacy of Social Justice",
     tagline_tamil: "இவரது ரத்தத்தில் கலந்திருப்பது அரசியல் அல்ல... அது திராவிடத்தின் இலக்கியம், தியாகம், மற்றும் ஒழுக்கம்.",
-    tagline_english: "Dravidianism is not a thought, it is my blood flow.",
+    tagline_english: "Dravidianism is not a thought, it is my ideology.",
     cta_primary: "Explore Vision",
     cta_secondary: "Family Heritage"
   },

@@ -56,8 +56,29 @@ const Initiatives: React.FC = () => {
                 <Video size={150} />
               </div>
               <div className="relative z-10">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-100 text-red-600 flex items-center justify-center rounded-lg mb-4 sm:mb-6">
-                  <Video size={24} className="sm:w-7 sm:h-7" aria-hidden="true" />
+                <div className="flex items-start justify-between mb-4 sm:mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-100 text-red-600 flex items-center justify-center rounded-lg">
+                    <Video size={24} className="sm:w-7 sm:h-7" aria-hidden="true" />
+                  </div>
+                  {/* Video Previews */}
+                  <div className="flex gap-2">
+                    <div className="w-8 h-14 sm:w-9 sm:h-16 rounded-md overflow-hidden border-2 border-red-200 hover:border-red-500 transition-colors shadow-sm">
+                      <video
+                        src="/videos/v1.mp4"
+                        className="w-full h-full object-cover"
+                        muted
+                        preload="metadata"
+                      />
+                    </div>
+                    <div className="w-8 h-14 sm:w-9 sm:h-16 rounded-md overflow-hidden border-2 border-red-200 hover:border-red-500 transition-colors shadow-sm">
+                      <video
+                        src="/videos/v2.mp4"
+                        className="w-full h-full object-cover"
+                        muted
+                        preload="metadata"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2">{APP_CONTENT.initiatives.projects[0].title}</h3>
                 <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
@@ -76,8 +97,29 @@ const Initiatives: React.FC = () => {
                 <Film size={150} />
               </div>
               <div className="relative z-10">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-zinc-800 text-white flex items-center justify-center rounded-lg mb-4 sm:mb-6">
-                  <Film size={24} className="sm:w-7 sm:h-7" aria-hidden="true" />
+                <div className="flex items-start justify-between mb-4 sm:mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-zinc-800 text-white flex items-center justify-center rounded-lg">
+                    <Film size={24} className="sm:w-7 sm:h-7" aria-hidden="true" />
+                  </div>
+                  {/* Document Previews */}
+                  <div className="flex gap-2">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md overflow-hidden border-2 border-zinc-700 hover:border-red-500 transition-colors shadow-sm relative">
+                      <iframe
+                        src="/editorials/e1.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                        className="w-[200%] h-[200%] scale-50 origin-top-left border-0 pointer-events-none"
+                        title="PDF Preview 1"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+                    </div>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md overflow-hidden border-2 border-zinc-700 hover:border-red-500 transition-colors shadow-sm relative">
+                      <iframe
+                        src="/editorials/e2.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                        className="w-[200%] h-[200%] scale-50 origin-top-left border-0 pointer-events-none"
+                        title="PDF Preview 2"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+                    </div>
+                  </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2">{APP_CONTENT.initiatives.projects[1].title}</h3>
                 <p className="text-gray-400 text-sm sm:text-base leading-relaxed">

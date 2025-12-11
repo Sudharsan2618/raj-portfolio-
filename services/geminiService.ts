@@ -23,7 +23,7 @@ export const sendMessageToGemini = async (
     const previousHistory = history.slice(0, -1);
 
     const chat = client.chats.create({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       config: {
         systemInstruction: CHATBOT_CONTEXT,
         temperature: 0.7,

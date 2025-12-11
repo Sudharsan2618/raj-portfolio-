@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-center text-white">
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-end md:justify-center text-white">
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-4 lg:gap-8">

@@ -69,7 +69,7 @@ export const APP_CONTENT = {
       {
         name: "N.S. Krishnan (Kalaivanar)",
         role: "Grandfather",
-        desc: "Legendary reformist and satirist who used art to awaken social consciousness. His legacy influences Raj's artistic endeavors.",
+        desc: "Legendary reformist and satirist who used art to awaken social consciousness. His legacy influences my artistic endeavors.",
         image: "N_S_Krishnan.png"
       }
     ]

@@ -36,9 +36,37 @@ const Hero: React.FC = () => {
 
             {/* Main Title with Credentials */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-4 mb-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9]">
-                <span className="text-white">Raj</span>{' '}
-                <span className="text-red-600">kanna.S</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[1.2]">
+                <span
+                  className="hero-name-raj"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 25%, #ffffff 50%, #cbd5e1 75%, #ffffff 100%)',
+                    backgroundSize: '200% 200%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'shimmer 3s ease-in-out infinite',
+                    filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
+                    letterSpacing: '0.02em',
+                    fontFamily: 'Georgia, "Times New Roman", serif',
+                  }}
+                >
+                  Raj
+                </span>{' '}
+                <span
+                  className="hero-name-kanna"
+                  style={{
+                    background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 20%, #f59e0b 40%, #ef4444 60%, #dc2626 80%, #b91c1c 100%)',
+                    backgroundSize: '300% 300%',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'fireGradient 4s ease-in-out infinite',
+                    filter: 'drop-shadow(0 0 25px rgba(239, 68, 68, 0.5)) drop-shadow(0 0 50px rgba(220, 38, 38, 0.3))',
+                  }}
+                >
+                  kanna.S
+                </span>
               </h1>
               <span
                 className="text-amber-400 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-wide"

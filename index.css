@@ -43,6 +43,53 @@ body {
   filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.5));
 }
 
+/* Hero Name Animations */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fireGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-name-raj {
+  display: inline-block;
+  position: relative;
+}
+
+.hero-name-kanna {
+  display: inline-block;
+  position: relative;
+}
+
 /* Skip to main content link for accessibility */
 .skip-to-main {
   position: absolute;

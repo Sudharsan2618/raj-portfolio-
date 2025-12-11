@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import VideoGallery from './components/VideoGallery';
 import PDFGallery from './components/PDFGallery';
+import AKVilvamBlog from './components/AKVilvamBlog';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/videos" element={<VideoGallery />} />
             <Route path="/editorials" element={<PDFGallery />} />
+            <Route path="/blog/ak-vilvam" element={<AKVilvamBlog />} />
           </Routes>
         </main>
         <Footer />

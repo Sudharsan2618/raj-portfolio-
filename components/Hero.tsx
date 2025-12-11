@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="/img/image.png"
-          alt="Raj Kanna S Background"
+          alt="Raj Kanna.S Background"
           className="w-full h-full object-cover object-center"
           loading="eager"
         />
@@ -36,13 +36,19 @@ const Hero: React.FC = () => {
 
             {/* Main Title with Credentials */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-4 mb-6">
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9] gradient-text-name"
-              >
-                Raj kanna.S
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9]">
+                <span className="text-white">Raj</span>{' '}
+                <span className="text-red-600">kanna.S</span>
               </h1>
-              <span className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-wide">
-                B.E,MBA,LL.B
+              <span
+                className="inline-flex items-center px-3 sm:px-4 py-1 sm:py-1.5 text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-wider rounded-full border-2 border-amber-400/60 bg-gradient-to-r from-amber-500/20 via-yellow-400/10 to-amber-500/20 backdrop-blur-sm shadow-lg shadow-amber-500/20"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.1) 50%, rgba(251, 191, 36, 0.15) 100%)',
+                  color: '#fcd34d',
+                  textShadow: '0 0 20px rgba(251, 191, 36, 0.5)',
+                }}
+              >
+                B.E, MBA, LL.B
               </span>
             </div>
           </motion.div>

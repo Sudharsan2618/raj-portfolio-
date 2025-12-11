@@ -12,7 +12,7 @@ const Chatbot: React.FC = () => {
     {
       id: 'welcome',
       role: 'model',
-      text: 'Vanakkam! I am the AI assistant for Raj Kanna S. Ask me about his lineage, his work with the Youth Congress, or his recent book initiatives.',
+      text: 'Vanakkam! I am the AI assistant for Raj Kanna.S. Ask me about his lineage, his work with the Youth Congress, or his recent book initiatives.',
       timestamp: new Date()
     }
   ]);
@@ -43,7 +43,7 @@ const Chatbot: React.FC = () => {
     try {
       // Prepare history for API context (excluding the very first welcome message if needed, or keeping it)
       const historyForApi = messages.map(m => ({ role: m.role, text: m.text }));
-      
+
       const responseText = await sendMessageToGemini(userMsg.text, historyForApi);
 
       const botMsg: ChatMessage = {
@@ -112,11 +112,10 @@ const Chatbot: React.FC = () => {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed ${
-                      msg.role === 'user'
+                    className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed ${msg.role === 'user'
                         ? 'bg-red-600 text-white rounded-br-none'
                         : 'bg-white text-gray-800 border border-gray-200 shadow-sm rounded-bl-none'
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </div>

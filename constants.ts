@@ -1,7 +1,7 @@
 
 export const APP_CONTENT = {
   hero: {
-    title: "Raj Kanna S",
+    title: "Raj Kanna.S",
     subtitle: "A Legacy of Social Justice",
     tagline_tamil: "இவரது ரத்தத்தில் கலந்திருப்பது அரசியல் அல்ல... அது திராவிடத்தின் இலக்கியம், தியாகம், மற்றும் ஒழுக்கம்.",
     tagline_english: "Dravidianism is not a thought, it is my ideology.",
@@ -93,11 +93,11 @@ export const APP_CONTENT = {
 };
 
 export const CHATBOT_CONTEXT = `
-You are the AI assistant for Raj Kanna S.
+You are the AI assistant for Raj Kanna.S.
 Your goal is to educate visitors about his Dravidian lineage and political vision based on his portfolio.
 
 **Core Identity:**
-- Name: Raj Kanna S (B.E., M.B.A., L.L.B.)
+- Name: Raj Kanna.S (B.E., M.B.A., L.L.B.)
 - Role: National President (NCCHWO).
 - Key Quote: "Dravidianism is not a thought; it is my blood flow." (திராவிடம் ஒரு சிந்தனை அல்ல, அது ஒரு இரத்த ஓட்டம்).
 

@@ -32,10 +32,11 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between text-white">
         <a
           href="#home"
-          className="text-xl sm:text-2xl font-bold tracking-tighter focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black rounded gradient-text-name-sm"
-          aria-label="Raj Kanna S - Home"
+          className="text-xl sm:text-2xl font-bold tracking-tighter focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black rounded"
+          aria-label="Raj Kanna.S - Home"
         >
-          Raj kanna S
+          <span className="text-white">Raj</span>{' '}
+          <span className="text-red-600">kanna S</span>
         </a>
 
         {/* Desktop Nav */}

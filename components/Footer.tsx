@@ -11,10 +11,9 @@ const Footer: React.FC = () => {
 
           {/* Brand & Quote */}
           <div className="space-y-4 sm:space-y-6">
-            <h3
-              className="text-2xl sm:text-3xl font-extrabold tracking-tighter gradient-text-name-sm"
-            >
-              Raj kanna S
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter">
+              <span className="text-white">Raj</span>{' '}
+              <span className="text-red-600">kanna S</span>
             </h3>
             <blockquote className="text-gray-400 italic text-sm leading-relaxed border-l-2 border-red-600 pl-4">
               "{APP_CONTENT.contact.footer_quote}"
@@ -104,7 +103,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-zinc-800 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-2">
-          <p>&copy; {new Date().getFullYear()} Raj Kanna S. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Raj Kanna.S. All rights reserved.</p>
           <p>Upholding the Dravidian Ideology.</p>
         </div>
       </div>

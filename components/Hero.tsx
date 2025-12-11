@@ -37,23 +37,19 @@ const Hero: React.FC = () => {
             {/* Main Title with Credentials */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-4 mb-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[1.2]">
+                <span className="text-white">Raj</span>{' '}
                 <span
-                  className="hero-name-raj"
+                  className="hero-name-kanna"
                   style={{
-                    background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 25%, #ffffff 50%, #cbd5e1 75%, #ffffff 100%)',
-                    backgroundSize: '200% 200%',
+                    background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 20%, #f59e0b 40%, #ef4444 60%, #dc2626 80%, #b91c1c 100%)',
+                    backgroundSize: '300% 300%',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
-                    animation: 'shimmer 3s ease-in-out infinite',
-                    filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
-                    letterSpacing: '0.02em',
-                    fontFamily: 'Georgia, "Times New Roman", serif',
+                    animation: 'fireGradient 4s ease-in-out infinite',
+                    filter: 'drop-shadow(0 0 25px rgba(239, 68, 68, 0.5)) drop-shadow(0 0 50px rgba(220, 38, 38, 0.3))',
                   }}
                 >
-                  Raj
-                </span>{' '}
-                <span className="hero-name-kanna bg-gradient-to-r from-red-500 via-red-400 to-amber-500 bg-clip-text text-transparent">
                   kanna.S
                 </span>
               </h1>

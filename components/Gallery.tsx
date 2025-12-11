@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X, Film, Users, Eye } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Film, Users, Eye, Heart } from 'lucide-react';
 
 // Acting images
 const actingImages = [
@@ -14,7 +14,7 @@ const actingImages = [
 
 // Political images
 const politicsImages = [
-    { src: '/img/politics/image.png', alt: 'Political journey - Event 1' },
+    { src: '/img/politics/anna.png', alt: 'Political journey - Event 1' },
     { src: '/img/politics/image1.png', alt: 'Political journey - Event 2' },
     { src: '/img/politics/image2.png', alt: 'Political journey - Event 3' },
     { src: '/img/politics/image3.png', alt: 'Political journey - Event 4' },
@@ -24,14 +24,26 @@ const politicsImages = [
     { src: '/img/politics/image7.png', alt: 'Political journey - Event 8' },
     { src: '/img/politics/image8.png', alt: 'Political journey - Event 9' },
     { src: '/img/politics/image9.png', alt: 'Political journey - Event 10' },
+    { src: '/img/politics/image10.png', alt: 'Political journey - Event 11' },
 ];
 
-type GalleryCategory = 'all' | 'acting' | 'politics';
+// Social Service images
+const socialServiceImages = [
+    { src: '/social_service/image1.png', alt: 'Social Service - Community Help 1' },
+    { src: '/social_service/image2.png', alt: 'Social Service - Community Help 2' },
+    { src: '/social_service/image3.png', alt: 'Social Service - Community Help 3' },
+    { src: '/social_service/image4.png', alt: 'Social Service - Community Help 4' },
+    { src: '/social_service/image5.png', alt: 'Social Service - Community Help 5' },
+    { src: '/social_service/image6.png', alt: 'Social Service - Community Help 6' },
+    { src: '/social_service/image7.png', alt: 'Social Service - Community Help 7' },
+];
+
+type GalleryCategory = 'all' | 'acting' | 'politics' | 'social';
 
 interface ImageData {
     src: string;
     alt: string;
-    category: 'acting' | 'politics';
+    category: 'acting' | 'politics' | 'social';
 }
 
 const Gallery: React.FC = () => {
@@ -45,6 +57,7 @@ const Gallery: React.FC = () => {
     const allImages: ImageData[] = [
         ...actingImages.map(img => ({ ...img, category: 'acting' as const })),
         ...politicsImages.map(img => ({ ...img, category: 'politics' as const })),
+        ...socialServiceImages.map(img => ({ ...img, category: 'social' as const })),
     ];
 
     // Filter images based on category
@@ -113,6 +126,7 @@ const Gallery: React.FC = () => {
         { id: 'all', label: 'All Moments', icon: Eye },
         { id: 'acting', label: 'Cinema & Arts', icon: Film },
         { id: 'politics', label: 'Political Journey', icon: Users },
+        { id: 'social', label: 'Social Service', icon: Heart },
     ];
 
     return (
@@ -262,9 +276,11 @@ const Gallery: React.FC = () => {
                                 {/* Category Badge */}
                                 <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg ${image.category === 'acting'
                                     ? 'bg-purple-500/90 text-white'
-                                    : 'bg-amber-500/90 text-black'
+                                    : image.category === 'social'
+                                        ? 'bg-emerald-500/90 text-white'
+                                        : 'bg-amber-500/90 text-black'
                                     }`}>
-                                    {image.category === 'acting' ? 'Cinema' : 'Politics'}
+                                    {image.category === 'acting' ? 'Cinema' : image.category === 'social' ? 'Social Service' : 'Politics'}
                                 </div>
 
                                 {/* View Icon on Hover */}
@@ -277,7 +293,7 @@ const Gallery: React.FC = () => {
                                 {/* Bottom gradient info bar */}
                                 <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <span className="text-white text-xs sm:text-sm font-medium">
-                                        {image.category === 'acting' ? 'Cinema & Arts' : 'Political Journey'}
+                                        {image.category === 'acting' ? 'Cinema & Arts' : image.category === 'social' ? 'Social Service' : 'Political Journey'}
                                     </span>
                                 </div>
                             </motion.div>
@@ -288,8 +304,8 @@ const Gallery: React.FC = () => {
                 {/* Stats Section */}
                 <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                     {[
-                        { number: '15+', label: 'Years in Cinema', color: 'text-purple-600' },
-                        { number: '20+', label: 'Years in Politics', color: 'text-amber-600' },
+                        { number: '10+', label: 'Years in Cinema', color: 'text-purple-600' },
+                        { number: '15+', label: 'Years in Politics', color: 'text-amber-600' },
                         { number: '100+', label: 'Community Programs', color: 'text-red-600' },
                         { number: '∞', label: 'Dedication', color: 'text-emerald-600' },
                     ].map((stat, idx) => (
@@ -384,9 +400,11 @@ const Gallery: React.FC = () => {
                                 <div className="flex items-center justify-between">
                                     <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${filteredImages[selectedImage]?.category === 'acting'
                                         ? 'bg-purple-500 text-white'
-                                        : 'bg-amber-500 text-black'
+                                        : filteredImages[selectedImage]?.category === 'social'
+                                            ? 'bg-emerald-500 text-white'
+                                            : 'bg-amber-500 text-black'
                                         }`}>
-                                        {filteredImages[selectedImage]?.category === 'acting' ? 'Cinema & Arts' : 'Political Journey'}
+                                        {filteredImages[selectedImage]?.category === 'acting' ? 'Cinema & Arts' : filteredImages[selectedImage]?.category === 'social' ? 'Social Service' : 'Political Journey'}
                                     </span>
                                     <span className="text-white/70 text-sm">
                                         {selectedImage + 1} / {filteredImages.length}

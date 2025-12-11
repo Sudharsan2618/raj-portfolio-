@@ -14,7 +14,7 @@ export const APP_CONTENT = {
     highlights: [
       {
         title: "Academic Excellence",
-        desc: "B.E (Distinction & Gold Medal), M.B.A., LL.B. School Topper at St. Michael's Academy.",
+        desc: "B.E., M.B.A., LL.B. School Topper, Head boy of ST. MICHAEL’S ACADEMY, District Record Holder in Triple Jump.",
       },
       {
         title: "Student Leadership",
@@ -25,7 +25,7 @@ export const APP_CONTENT = {
       {
         year: "Education",
         title: "Academic Excellence",
-        desc: "B.E. (Distinction, Gold Medal), M.B.A., LL.B. School Topper and District Record Holder in Triple Jump."
+        desc: "B.E., M.B.A., LL.B. School Topper, Head boy of ST. MICHAEL’S ACADEMY, District Record Holder in Triple Jump."
       },
       {
         year: "Youth Leadership",
@@ -49,19 +49,19 @@ export const APP_CONTENT = {
     quote_tamil: "முரசொலி ஏ.கே.வில்வம் அவர்களின் பேரன். கலைவாணர் பாரம்பரியம்.",
     ancestors: [
       {
-        name: "A.K. Vilvam",
+        name: "A.K. Vilvam (MLC)",
         role: "Grandfather",
-        desc: "Former MLC & Editor of Murasoli. Known as 'Ezhuthazhagan'. A key literary pillar of the Dravidian movement and a signatory witness for Kalaignar's Gopalapuram residence.",
+        desc: "Former MLC & Editor of Murasoli. Known as 'Ezhuthazhagan'. A key literary pillar of the Dravidian movement and a witness signatory for Kalaignar's Gopalapuram residence.",
         image: "A_K_Vilvam.png"
       },
       {
-        name: "Arunmozhi Vilvam",
+        name: "Arunmozhi Vilvam (DMK Speaker)",
         role: "Grandmother",
         desc: "One of the five major women leaders of DMK. Arignar Anna praised her as his favorite speaker from the South.",
         image: "Arunmozhi_vilvam.png"
       },
       {
-        name: "R.V. Swaminathan",
+        name: "R.V. Swaminathan (Union Minister)",
         role: "Grandfather",
         desc: "Former Union Minister of Agriculture, Government of India. A stalwart in national politics.",
         image: "swaminathan.png"

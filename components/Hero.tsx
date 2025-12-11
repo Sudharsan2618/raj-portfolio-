@@ -33,11 +33,18 @@ const Hero: React.FC = () => {
               {APP_CONTENT.hero.subtitle}
             </h2>
 
-            {/* Main Title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-6">
-              <span className="text-white">RAJ</span>{' '}
-              <span className="text-red-600">KANNA S</span>
-            </h1>
+
+            {/* Main Title with Credentials */}
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-4 mb-6">
+              <h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9] gradient-text-name"
+              >
+                Raj kanna.S
+              </h1>
+              <span className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-wide">
+                B.E,MBA,LL.B
+              </span>
+            </div>
           </motion.div>
 
           {/* Quote Box */}

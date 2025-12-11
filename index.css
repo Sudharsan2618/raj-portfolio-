@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-html, body {
+html,
+body {
   font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
   background-color: #f8fafc;
   overflow-x: hidden;
@@ -18,6 +19,28 @@ html, body {
 
 .bg-dmk-red {
   background-color: #cc0000;
+}
+
+/* Gradient text for name - black at top to red at bottom with glow */
+.gradient-text-name {
+  background: linear-gradient(180deg, #1a0505 55%, #450a0a 25%, #991b1b 50%, #dc2626 75%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.6)) drop-shadow(0 0 60px rgba(220, 38, 38, 0.4));
+  display: block;
+  padding-bottom: 0.15em;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.gradient-text-name-sm {
+  background: linear-gradient(180deg, #1a0505 0%, #450a0a 25%, #991b1b 50%, #dc2626 75%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.5));
 }
 
 /* Skip to main content link for accessibility */
@@ -63,7 +86,11 @@ html, body {
 }
 
 /* Ensure minimum touch target size (44x44px) */
-button, a, input, textarea, select {
+button,
+a,
+input,
+textarea,
+select {
   min-height: 44px;
   min-width: 44px;
 }
@@ -89,20 +116,26 @@ img {
 }
 
 /* Masonry Gallery Column Gap */
-.columns-2, .columns-3, .columns-4 {
+.columns-2,
+.columns-3,
+.columns-4 {
   column-gap: 0.75rem;
 }
 
 @media (min-width: 640px) {
-  .columns-2, .columns-3, .columns-4 {
+
+  .columns-2,
+  .columns-3,
+  .columns-4 {
     column-gap: 1rem;
   }
 }
 
 @media (min-width: 768px) {
-  .columns-2, .columns-3, .columns-4 {
+
+  .columns-2,
+  .columns-3,
+  .columns-4 {
     column-gap: 1.25rem;
   }
 }
-
-

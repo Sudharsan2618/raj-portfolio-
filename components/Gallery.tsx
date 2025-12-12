@@ -222,7 +222,7 @@ const Gallery: React.FC = () => {
                         transition={{ delay: 0.1 }}
                         className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4"
                     >
-                        The Journey from <span className="text-red-600">Zero</span> to <span className="text-amber-600">Hero</span>
+                        Beyond the <span className="text-red-600">Frame</span>, Into the <span className="text-amber-600">Heart</span> of People
                     </motion.h3>
                     <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
                         Explore memorable moments from cinema and politics - a visual chronicle of dedication, passion, and service

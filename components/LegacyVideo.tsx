@@ -1,21 +1,26 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize2 } from 'lucide-react';
+import { useChatbot } from '../contexts/ChatbotContext';
 
 const LegacyVideo: React.FC = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isMuted, setIsMuted] = useState(true);
+    const [isMuted, setIsMuted] = useState(false); // Start unmuted
     const [showControls, setShowControls] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const { pauseBackgroundMusic, resumeBackgroundMusic } = useChatbot();
 
     const togglePlay = () => {
         if (videoRef.current) {
             if (isPlaying) {
                 videoRef.current.pause();
+                setIsPlaying(false);
+                resumeBackgroundMusic(); // Resume background music when video pauses
             } else {
+                pauseBackgroundMusic(); // Pause background music when video plays
                 videoRef.current.play();
+                setIsPlaying(true);
             }
-            setIsPlaying(!isPlaying);
         }
     };
 
@@ -37,6 +42,7 @@ const LegacyVideo: React.FC = () => {
     const handleVideoEnd = () => {
         setIsPlaying(false);
         setShowControls(true);
+        resumeBackgroundMusic(); // Resume background music when video ends
     };
 
     return (

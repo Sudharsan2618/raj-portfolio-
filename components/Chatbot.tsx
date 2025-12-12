@@ -3,9 +3,10 @@ import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChatMessage } from '../types';
 import { sendMessageToGemini } from '../services/geminiService';
+import { useChatbot } from '../contexts/ChatbotContext';
 
 const Chatbot: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isChatbotOpen: isOpen, setIsChatbotOpen: setIsOpen } = useChatbot();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -113,8 +114,8 @@ const Chatbot: React.FC = () => {
                 >
                   <div
                     className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed ${msg.role === 'user'
-                        ? 'bg-red-600 text-white rounded-br-none'
-                        : 'bg-white text-gray-800 border border-gray-200 shadow-sm rounded-bl-none'
+                      ? 'bg-red-600 text-white rounded-br-none'
+                      : 'bg-white text-gray-800 border border-gray-200 shadow-sm rounded-bl-none'
                       }`}
                   >
                     {msg.text}

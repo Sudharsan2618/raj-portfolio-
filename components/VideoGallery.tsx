@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, X, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useChatbot } from '../contexts/ChatbotContext';
 
 const videos = [
   { id: 1, name: 'Video 1', path: '/videos/v1.mp4' },
@@ -10,11 +11,24 @@ const videos = [
 
 const VideoGallery: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const { pauseBackgroundMusic, resumeBackgroundMusic } = useChatbot();
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Handle video selection - pause background music when opening modal
+  const handleVideoSelect = (videoPath: string) => {
+    pauseBackgroundMusic();
+    setSelectedVideo(videoPath);
+  };
+
+  // Handle modal close - resume background music
+  const handleCloseModal = () => {
+    setSelectedVideo(null);
+    resumeBackgroundMusic();
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 pt-24 sm:px-6 sm:py-12 sm:pt-32">
@@ -40,7 +54,7 @@ const VideoGallery: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ y: -8 }}
             className="relative bg-black rounded-xl overflow-hidden shadow-xl cursor-pointer group border border-gray-800"
-            onClick={() => setSelectedVideo(video.path)}
+            onClick={() => handleVideoSelect(video.path)}
           >
             <div className="aspect-[9/16] relative">
               <video
@@ -83,7 +97,7 @@ const VideoGallery: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedVideo(null)}
+              onClick={handleCloseModal}
               className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-4 backdrop-blur-sm"
             >
               <motion.div
@@ -94,7 +108,7 @@ const VideoGallery: React.FC = () => {
                 className="relative h-[85vh] aspect-[9/16] max-w-full bg-black rounded-2xl overflow-hidden shadow-2xl border border-gray-800"
               >
                 <button
-                  onClick={() => setSelectedVideo(null)}
+                  onClick={handleCloseModal}
                   className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/50 hover:bg-red-600 rounded-full p-2 transition-all z-10"
                   aria-label="Close video"
                 >
@@ -118,3 +132,4 @@ const VideoGallery: React.FC = () => {
 };
 
 export default VideoGallery;
+

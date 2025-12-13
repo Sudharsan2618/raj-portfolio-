@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden text-white">
+    <section id="home" className="relative min-h-[70vh] md:min-h-screen flex items-end md:items-center justify-center overflow-hidden text-white pb-20 md:pb-0">
       {/* Full Background Image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content Container */}
-      <div className="container mx-auto px-4 sm:px-6 z-10 relative py-20 md:py-0">
+      <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-24 pb-8 md:py-0">
         <div className="max-w-3xl">
           {/* Subtitle */}
           <motion.div
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="bg-black/40 border-l-4 border-red-600 p-4 sm:p-6 md:p-8 backdrop-blur-md rounded-r-lg mb-8"
+            className="bg-black/40 border-l-4 border-red-600 p-4 sm:p-6 md:p-8 backdrop-blur-md rounded-r-lg"
           >
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white italic leading-relaxed font-['Noto_Sans_Tamil'] mb-3">
               "{APP_CONTENT.hero.tagline_tamil}"
@@ -72,7 +72,6 @@ const Hero: React.FC = () => {
             </p>
           </motion.div>
 
-
         </div>
       </div>
 
@@ -81,16 +80,17 @@ const Hero: React.FC = () => {
         href="#legacy-video"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white focus:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black rounded-full p-2 z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 hover:text-white focus:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black rounded-full p-2 z-20"
         aria-label="Scroll to next section"
       >
-        <ChevronDown size={36} aria-hidden="true" />
+        <ChevronDown size={32} aria-hidden="true" />
       </motion.a>
 
       {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
     </section>
   );
 };
 
 export default Hero;
+

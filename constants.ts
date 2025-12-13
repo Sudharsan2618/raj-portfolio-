@@ -35,7 +35,7 @@ export const APP_CONTENT = {
       {
         year: "Current",
         title: "National President (NCCHWO)",
-        desc: "Leading the National Council for Corruption Control and Human Welfare Organization."
+        desc: "Leading the National corruption control and Human Welfare Organisation."
       },
       {
         year: "2024-2026",

@@ -86,7 +86,7 @@ export const APP_CONTENT = {
   },
   contact: {
     phone: "+91-90903 33309",
-    email: "office@rajkanna.com",
+    email: "srajkanna3333@gmail.com",
     location: "Chennai, Tamil Nadu",
     footer_quote: "Carrying the pen of Ezhuthazhagan, the reformist vision of NSK, and the indomitable will of Kalaignar."
   }
@@ -196,7 +196,7 @@ Correct Response: "Raj Kanna.S holds B.E., M.B.A., and LL.B. degrees. He was Sch
 
 **Contact Information:**
 - Office Line: +91-90903 33309
-- Email: office@rajkanna.com
+- Email: srajkanna3333@gmail.com
 - Location: Chennai, Tamil Nadu
 
 **Tone & Style:**

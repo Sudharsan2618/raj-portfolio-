@@ -16,7 +16,7 @@ export const sendMessageToGemini = async (
 ): Promise<string> => {
   try {
     const client = getAIClient();
-    
+
     // The history array passed from the component includes the *current* user message at the end.
     // The Gemini `sendMessage` method takes the current message as an argument.
     // We must pass only the *previous* messages in the history config to avoid duplication.
@@ -26,7 +26,7 @@ export const sendMessageToGemini = async (
       model: 'gemini-2.5-flash-lite',
       config: {
         systemInstruction: CHATBOT_CONTEXT,
-        temperature: 0.7,
+        temperature: 0.3,
       },
       history: previousHistory.map(h => ({
         role: h.role === 'model' ? 'model' : 'user',

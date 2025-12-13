@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { ChatMessage } from '../types';
 import { sendMessageToGemini } from '../services/geminiService';
 import { useChatbot } from '../contexts/ChatbotContext';
@@ -118,7 +119,22 @@ const Chatbot: React.FC = () => {
                       : 'bg-white text-gray-800 border border-gray-200 shadow-sm rounded-bl-none'
                       }`}
                   >
-                    {msg.text}
+                    {msg.role === 'model' ? (
+                      <ReactMarkdown
+                        components={{
+                          strong: ({ children }) => <strong className="font-bold text-red-700">{children}</strong>,
+                          em: ({ children }) => <em className="italic">{children}</em>,
+                          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                          ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
+                          ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
+                          li: ({ children }) => <li className="mb-1">{children}</li>,
+                        }}
+                      >
+                        {msg.text}
+                      </ReactMarkdown>
+                    ) : (
+                      msg.text
+                    )}
                   </div>
                 </div>
               ))}

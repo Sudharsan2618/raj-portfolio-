@@ -72,26 +72,7 @@ const Hero: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
-          >
-            <a
-              href="#initiatives"
-              className="px-8 py-4 bg-red-600 hover:bg-red-700 focus:bg-red-700 text-white font-bold rounded transition-all shadow-lg hover:shadow-red-600/40 focus:shadow-red-600/40 uppercase tracking-wider text-sm text-center focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black"
-            >
-              {APP_CONTENT.hero.cta_primary}
-            </a>
-            <a
-              href="#legacy"
-              className="px-8 py-4 border-2 border-white/30 hover:border-white focus:border-white text-white hover:bg-white/10 focus:bg-white/10 font-medium rounded transition-all uppercase tracking-wider text-sm text-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black backdrop-blur-sm"
-            >
-              {APP_CONTENT.hero.cta_secondary}
-            </a>
-          </motion.div>
+
         </div>
       </div>
 

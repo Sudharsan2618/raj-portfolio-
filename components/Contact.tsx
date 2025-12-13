@@ -1,10 +1,75 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { APP_CONTENT } from '../constants';
-import { Send, User, Mail, MessageSquare } from 'lucide-react';
+import { Send, User, Mail, MessageSquare, Loader2, CheckCircle, XCircle } from 'lucide-react';
+
+// Web3Forms Access Key
+const WEB3FORMS_ACCESS_KEY = 'ccc0882b-316a-41c2-9bd6-0a37249ba8d4';
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Contact Form Submission from ${formData.name}`,
+          from_name: 'Raj Kanna.S Portfolio'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Reset status after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setErrorMessage(result.message || 'Something went wrong. Please try again.');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 bg-white relative">
       <div className="container mx-auto px-4 sm:px-6">
@@ -41,7 +106,40 @@ const Contact: React.FC = () => {
 
           {/* Right Side: Form */}
           <div className="w-full md:w-7/12 p-6 sm:p-8 md:p-10">
-            <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()} aria-label="Contact form">
+            {/* Success/Error Messages */}
+            <AnimatePresence>
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
+                >
+                  <CheckCircle className="text-green-600 flex-shrink-0" size={24} />
+                  <div>
+                    <p className="text-green-800 font-semibold">Message Sent Successfully!</p>
+                    <p className="text-green-600 text-sm">Thank you for reaching out. We'll get back to you soon.</p>
+                  </div>
+                </motion.div>
+              )}
+
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3"
+                >
+                  <XCircle className="text-red-600 flex-shrink-0" size={24} />
+                  <div>
+                    <p className="text-red-800 font-semibold">Failed to Send Message</p>
+                    <p className="text-red-600 text-sm">{errorMessage}</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit} aria-label="Contact form">
               <div>
                 <label htmlFor="name" className="block text-xs font-bold uppercase text-gray-500 mb-2">
                   Full Name <span className="text-red-600" aria-label="required">*</span>
@@ -52,8 +150,11 @@ const Contact: React.FC = () => {
                     type="text"
                     id="name"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm"
+                    disabled={status === 'loading'}
+                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="Your Name"
                     aria-required="true"
                   />
@@ -70,8 +171,11 @@ const Contact: React.FC = () => {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm"
+                    disabled={status === 'loading'}
+                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="your@email.com"
                     aria-required="true"
                   />
@@ -88,8 +192,11 @@ const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm resize-none"
+                    disabled={status === 'loading'}
+                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600 outline-none rounded-sm transition-all text-sm resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="How can we help you?"
                     aria-required="true"
                   />
@@ -98,11 +205,21 @@ const Contact: React.FC = () => {
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-red-600 text-white font-bold py-3 uppercase tracking-wider text-sm flex items-center justify-center gap-2 hover:bg-red-700 focus:bg-red-700 transition-colors shadow-lg shadow-red-600/20 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
+                disabled={status === 'loading'}
+                whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
+                whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+                className="w-full bg-red-600 text-white font-bold py-3 uppercase tracking-wider text-sm flex items-center justify-center gap-2 hover:bg-red-700 focus:bg-red-700 transition-colors shadow-lg shadow-red-600/20 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 disabled:bg-red-400 disabled:cursor-not-allowed"
               >
-                Send Message <Send size={16} aria-hidden="true" />
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 className="animate-spin" size={16} aria-hidden="true" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message <Send size={16} aria-hidden="true" />
+                  </>
+                )}
               </motion.button>
             </form>
           </div>
